@@ -4,15 +4,16 @@ using System.Data;
 
 namespace Employees.Models
 {
-    public class Users
+    public class User
     {
         [Key]
         public int UserId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
+        public bool isActive { get; set; }
 
-        [ForeignKey("Role")]
+        [ForeignKey("RoleId")]
         public int RoleId { get; set; }
 
         // Navigation property

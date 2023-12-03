@@ -1,0 +1,31 @@
+﻿@model List<Employees.Models.User>
+
+@{
+    ViewData["Title"] = "Agents";
+}
+
+<h2>Supervisor Dashboard</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>@(user.isActive ? "Active" : "Inactive")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@user.UserId">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

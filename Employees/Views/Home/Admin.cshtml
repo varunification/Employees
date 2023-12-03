@@ -1,0 +1,32 @@
+﻿@model List<Employees.Models.User>
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<h2>Admin Dashboard</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>@(user.isActive ? "Active" : "Inactive")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@user.UserId">Edit</a> |
+                    <a asp-action="ToggleActive" asp-route-id="@user.UserId" asp-route-returnUrl="Admin">Toggle Active</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

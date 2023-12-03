@@ -1,0 +1,35 @@
+﻿@model Employees.Models.User
+
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h2>Edit User</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="UserId" />
+    <input type="hidden" name="ReturnUrl" value="@Context.Request.Headers["Referer"]" />
+    <div class="form-group">
+        <label asp-for="Username">Username:</label>
+        <input asp-for="Username" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="isActive">Active:</label>
+        @if (Model.RoleId!=3)
+        {
+            <input asp-for="isActive" type="checkbox" />
+        }
+        else
+        {
+            <label>@(Model.isActive ? "Active" : "Not Active")</label>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
